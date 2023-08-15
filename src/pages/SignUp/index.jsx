@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ReCAPTCHA from 'react-recaptcha';
+import ReCAPTCHA from 'react-google-recaptcha';
 import './index.css';
 
 function SignUp() {
@@ -80,10 +80,7 @@ function SignUp() {
                 </div>
                 <div className='sign-up-part'>
                     <span>Security Check</span>
-                    <ReCAPTCHA
-                    sitekey="your-site-key"
-                    onChange={handleVerify}
-                    />
+                    <ReCAPTCHA sitekey="6LeIxAcTAAAAAGDYwTEbZcY3_dRkLutN4exvVa0f" />
                 </div>
                 <div className='sign-up-part'>
                     <span>Team & Conditions</span>
