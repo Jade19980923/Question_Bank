@@ -17,9 +17,7 @@ function Login() {
                     <div className='login-content-left-option'>Password</div>
                     <input type="password"></input>
                     <div className='login-content-left-forget'>Forgot password?</div>
-                    <link to="/Home">
-                        Login
-                    </link>
+                    <div className='login-content-left-login'>Login</div>
                 </div>
                 <div className='divider'></div>
                 <div className='login-content-right'>
