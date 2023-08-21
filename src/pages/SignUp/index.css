@@ -1,8 +1,11 @@
+
 .sign-up-box {
     display: flex;
     flex-direction: column;
     align-items: center; 
     width: 100vw;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 .sign-up-title {
@@ -27,12 +30,33 @@
     justify-content: center;
     height: 50px;
 }
+.sign-up-tip >h4{
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    margin-right: 20px;
+    font-weight: bold;
+}
 
 .sign-up-tip >div {
     color: rgb(34, 115, 245);
     margin-left: 5px;
-    margin-right: 5px;
+    margin-right: 10px;
     cursor: pointer;
+}
+
+.sign-up-tip >a {
+    color: rgb(34, 115, 245);
+    margin-left: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.sign-up-tip >span{
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .sign-up-tip >div:hover {
@@ -74,7 +98,7 @@
 }
 
 .sign-up-part-left >input {
-    width: 25vw;
+    width: 24vw;
     height: 25px;
     margin-top: 5px;
     margin-bottom: 10px;
@@ -84,6 +108,18 @@
     height: 100%;
     padding-top: 20px;
     margin-left: 20px;
+}
+
+.sign-up-part-password-field >div {
+    color: #666;
+    font-size: 12px;
+}
+
+.sign-up-part-password-field >input[type="password"] {
+    width: 24vw;
+    height: 25px;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 .sign-up-other-details {
@@ -96,7 +132,7 @@
 }
 
 .sign-up-other-details >input, .sign-up-other-details >select {
-    width: 25vw;
+    width: 24vw;
     height: 25px;
     margin-top: 5px;
     margin-bottom: 10px;
