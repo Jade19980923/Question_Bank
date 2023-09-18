@@ -1,8 +1,16 @@
 import express from "express"
-import { getTeachers } from "../controllers/admin.js"
+import { 
+  getTeachers,
+  getSingleTeacher,
+  deleteTeacher,
+  getDivisions
+} from "../controllers/admin.js"
 
 const router = express.Router()
 
-router.get("/home",getTeachers)
+router.get("/teachers",getTeachers)
+router.get("/teacher/:id",getSingleTeacher)
+router.get("/divisions",getDivisions)
+router.delete("/teacher/:id",deleteTeacher)
 
 export default router

@@ -4,8 +4,11 @@ import userRoute from './routes/users.js'
 import postRoute from './routes/posts.js'
 import adminRoute from './routes/admin.js'
 import cookieParser from "cookie-parser"
+import cors from "cors"
 
 const app = express()
+
+app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(express.json())
 app.use(cookieParser())
 

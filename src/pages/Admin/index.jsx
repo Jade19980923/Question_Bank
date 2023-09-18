@@ -1,60 +1,75 @@
 import { Link } from 'react-router-dom';
 import './index.css'
 import React, { useEffect, useState } from 'react';
+import TeachersList from './TeachersList';
+import EditTeacherList from './EditTeacherList';
 import axios from 'axios';
 
-function Admin () {
-  const [data, setData] = useState([])
+function Admin() {
+  const [content, setContent] = useState(""); // State to track content in right-content
 
-  useEffect(()=> {
-    axios.get("/admin/home")
-    .then(res => {
-      if(res.status === 200) {
-        setData(res.data.Result);
-      } else {
-        alert("Error")
+  const handleMenuClick = (menu) => {
+      switch (menu) {
+          case "Account Info":
+              setContent("Hello!");
+              break;
+
+          case "Universities":
+              setContent("UoW");
+              break;
+
+          case "List of Divisions":
+              setContent("IT");
+              break;
+
+          case "List of Teachers":
+              setContent("IT");
+              // setContent(<TeachersList />);
+              break;
+
+          case "Edit List of Teachers":
+              setContent(<TeachersList onAddNewTeacherClick={() => setContent(<EditTeacherList />)} />);
+              break;
+
+          case "Back to List of Teachers":
+              setContent(<EditTeacherList onBackToTeachersListClick={() => setContent(<TeachersList />)} />);
+              break;
+
+          case "Settings":
+              setContent("Edit");
+              break;
+
+          default:
+              setContent(""); // Reset content
+              break;
       }
-    })
-    .catch(err => console.log(err))
-  }, [])
+  };
 
   return (
-    <div className="main-container">
-      <h3>Teacher List</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Picture</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Phone Number</th>
-            <th>Division</th>
-            <th>University</th>
-            <th></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {data.map((teachers, index) => {
-            return <tr key={index}>
-              <td>{teachers.id}</td>
-              <td>{teachers.img}</td>
-              <td>{teachers.first_name}</td>
-              <td>{teachers.last_name}</td>
-              <td>{teachers.email}</td>
-              <td>{teachers.mobile}</td>
-              <td>{teachers.division_id}</td>
-              <td>{teachers.uid}</td>
-              <td>
-                <button>edit</button>
-                <button>delete</button>
-              </td>
-            </tr>
-          })}
-        </tbody>
-      </table>
+    <div className='centered-container'>
+      <div className="admin-dashboard">
+          <div className="left-sidebar">
+              <h3 className="menu-item dashboard">Dashboard</h3>
+              <div className="menu-item">
+                  <Link to="#" onClick={() => handleMenuClick("Account Info")}>Account Info</Link>
+              </div>
+              <div className="menu-item">
+                  <Link to="#" onClick={() => handleMenuClick("Universities")}>Universities</Link>
+              </div>
+              <div className="menu-item">
+                  <Link to="#" onClick={() => handleMenuClick("List of Divisions")}>List of Divisions</Link>
+              </div>
+              <div className="menu-item">
+                  <Link to="/admin/teacherslist" onClick={() => handleMenuClick("List of Teachers")}>List of Tearchers</Link>
+              </div>
+              <div className="menu-item">
+                  <Link to="#" onClick={() => handleMenuClick("Settings")}>Settings</Link>
+              </div>
+          </div>
+          <div className="right-content">
+              {content && <div>{content}</div>}
+          </div>
+      </div>
     </div>
   );
 }

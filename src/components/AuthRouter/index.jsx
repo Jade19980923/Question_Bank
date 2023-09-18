@@ -1,10 +1,14 @@
 import React from 'react'
 import { useRoutes, Navigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import SignUp from '../../pages/SignUp'
 import Login from '../../pages/Login'
 import Home from '../../pages/Home'
 import Admin from '../../pages/Admin'
-import './index.css';
+import TeachersList from '../../pages/Admin/TeachersList'
+import EditTeacherList from '../../pages/Admin/EditTeacherList'
+import AddNewTeacherList from '../../pages/Admin/EditTeacherList'
+import './index.css'
 
 const requireAuth = (component, isAuthenticated) => {
   return isAuthenticated ? component : <Navigate to="/login" replace />;
@@ -30,7 +34,27 @@ function AuthRouter ({ isAuthenticated }) {
     },
     {
       path: '/admin',
-      element: <Admin />,
+      element: (
+        <>
+          {/* 添加导航链接到 Admin 组件 */}
+          <Link to="/Admin"></Link>
+          <Admin />
+        </>
+      ),
+      children:[
+        {
+          path: 'teachersList',
+          element: <TeachersList />,
+        },
+        {
+          path: 'addnewteacher',
+          element: <AddNewTeacherList />,  
+        },
+        {
+          path: "editteacherlist/:id",
+          element: <EditTeacherList />  
+        },
+      ]
     },
     {
       path: '*',
