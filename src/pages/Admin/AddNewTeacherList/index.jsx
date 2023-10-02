@@ -42,7 +42,11 @@ function AddNewTeacher() {
 
   // 处理点击 ">>" 按钮的函数
   const handleMoveRightClick = () => {
+
+    // 获取所有复选框元素
     const checkboxes = document.querySelectorAll('.Division-checkbox');
+
+    // 用于存储选中的学生名字的数组
     const selectedNames = [];
 
     // 遍历复选框元素，如果选中则将对应学生名字添加到数组中
@@ -51,22 +55,29 @@ function AddNewTeacher() {
         const DivisionName = checkbox.getAttribute('data-Division-name');
         selectedNames.push(DivisionName);
       }
-    });
+    })
 
     // 更新选中的学生名字状态
     setSelectedDivisions(selectedNames);
 
     // 在这里将选中的学生名字更新到右侧部分的输入框
-    setInputValue(selectedNames.join(', ')); // 将学生名字用逗号分隔显示
-  };
+    setData({
+      ...data,
+      division : selectedNames.join(', ')
+    })
+    
+    
+  }
 
   // 处理点击 "<<" 按钮的函数
   const handleMoveLeftClick = () => {
-    // 清空右侧部分的输入框内容
-    setInputValue('');
     // 清空选中的学生名字
     setSelectedDivisions([]);
-  };
+    // 清空右侧部分的输入框内容
+    setData({
+      division : ''
+    })
+  }
 
   const handleConfirmClick = async (e) => {
       e.preventDefault() 
@@ -168,7 +179,7 @@ function AddNewTeacher() {
           <h3>Selected Divisions</h3>
           <input
           type="text"
-          value={inputValue}
+          value={data.division} onChange={e => setData({...data, division : e.target.value})}
           readOnly
           />
         </div>

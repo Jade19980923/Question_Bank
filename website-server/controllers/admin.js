@@ -80,9 +80,9 @@ export const addTeacher = (req,res) => {
     const hash = bcrypt.hashSync(password,salt)
 
     // Insert Teacher
-    const q = "INSERT INTO teachers(`first_name`,`last_name`,`password`,`email`,`uid`) VALUES (?,?,?,?,(SELECT id FROM universities where name = ?))"
+    const q = "INSERT INTO teachers(`first_name`,`last_name`,`password`,`email`,`uid`,`division_id`) VALUES (?,?,?,?,(SELECT id FROM universities where name = ?),(SELECT id FROM divisions WHERE name = ?))"
 
-    db.query(q,[req.body.first_name,req.body.last_name,hash,req.body.email,req.body.organisation],(err,data) => {
+    db.query(q,[req.body.first_name, req.body.last_name, hash, req.body.email, req.body.organisation, req.body.division],(err,data) => {
       if(err) return res.status(500).json(err)
       return res.status(200).json("Teacher has been created!")
     })
