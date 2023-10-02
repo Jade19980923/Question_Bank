@@ -1,28 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './index.css'
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import EditTeacherList from '../EditTeacherList/';
 
-function TeachersList({ onAddNewTeacherClick }) {
-
-  // const handleSortChange = (event) => {
-  //   const selectedDivision = event.target.value;
-  //   setSortBy(selectedDivision);
-  //   sortTeachers(selectedDivision);
-  // };
-
-  // const sortTeachers = (selectedDivision) => {
-  //   let sortedTeachers = [...teachersData];
-
-  //   if (selectedDivision === 'Division') {
-  //     setTeachersData(sortedTeachers); // 不进行排序
-  //   } else {
-  //     sortedTeachers.sort((a, b) => a.division.localeCompare(b.division));
-  //     setTeachersData(sortedTeachers);
-  //   }
-  // };
-  
+function TeachersList() {
+  const navigate = useNavigate()
 
   // show all teachers
   const [data, setData] = useState([])
@@ -39,11 +21,15 @@ function TeachersList({ onAddNewTeacherClick }) {
     .catch(err => console.log(err))
   }, [])
   
+  const handleAddButton = () => {
+    navigate("/admin/addnewteacher")
+  }
+
   return (
     <div className="teachers-content">
       <div className="header-container">
             <h2>List of Teachers</h2>
-            <button className="add-button" onClick={onAddNewTeacherClick}>Add a new teacher</button>
+            <button className="add-button" onClick={handleAddButton}>Add a new teacher</button>
       </div>
 
       <div className="table-container">

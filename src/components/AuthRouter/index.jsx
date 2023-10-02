@@ -7,7 +7,7 @@ import Home from '../../pages/Home'
 import Admin from '../../pages/Admin'
 import TeachersList from '../../pages/Admin/TeachersList'
 import EditTeacherList from '../../pages/Admin/EditTeacherList'
-import AddNewTeacherList from '../../pages/Admin/EditTeacherList'
+import AddNewTeacherList from '../../pages/Admin/AddNewTeacherList'
 import './index.css'
 
 const requireAuth = (component, isAuthenticated) => {

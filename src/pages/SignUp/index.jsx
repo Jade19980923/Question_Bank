@@ -82,27 +82,6 @@ function SignUp() {
                     </div> 
                 </div>
 
-                {/* <div className='sign-up-part'>
-                    <span>Other Details</span>
-                    <div className='sign-up-other-details'>
-                        <div>Date of Birth (dd/mm/yyyy)*</div>
-                        <input type="date"/>
-                    </div>
-                    <div className='sign-up-other-details'>
-                        <div>Country/Temitory of birth*</div>
-                        <select>
-                            <option value="option1">Europe</option>
-                            <option value="option2">Asia</option>
-                            <option value="option3">America</option>
-                            <option value="option4">Oceania</option>
-                        </select>
-                    </div>
-                    <div className='sign-up-other-details'>
-                        <div>Place of birth*</div>
-                        <input></input>
-                    </div>
-                </div> */}
-
                 <div className='sign-up-part'>
                     <span>Security Check</span>
                     <ReCAPTCHA sitekey="6LeIxAcTAAAAAGDYwTEbZcY3_dRkLutN4exvVa0f" />
