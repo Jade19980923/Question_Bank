@@ -26,7 +26,12 @@ export const getSingleTeacher = (req,res) => {
 }
 
 export const deleteTeacher = (req,res) => {
+  const sql = "DELETE from teachers WHERE id=?"
 
+  db.query(sql,[req.params.id], (err,result) => {
+    if(err) return res.status(500).json(err)
+    return res.status(200).json("Delete Success")
+  })
 }
 
 export const getDivisions = (req,res) => {

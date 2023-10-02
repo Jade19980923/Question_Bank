@@ -1,11 +1,11 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import './index.css'
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function TeachersList() {
   const navigate = useNavigate()
-
+  
   // show all teachers
   const [data, setData] = useState([])
   useEffect(()=> {
@@ -23,6 +23,19 @@ function TeachersList() {
   
   const handleAddButton = () => {
     navigate("/admin/addnewteacher")
+  }
+  const {id} = useParams()
+  const handleDeleteButton = () => {
+    axios.delete("/admin/deleteTeacher"+id)
+    .then(res => {
+      if(res.data.Status === "Success") {
+        window.location.reload(true);
+        navigate("/admin/")
+      } else {
+        alert("Error")
+      }
+    })
+    .catch(err => console.log(err));
   }
 
   return (
@@ -60,7 +73,8 @@ function TeachersList() {
               <tr key={teachers.id} className={index % 2 === 0 ? 'odd-row' : 'even-row'}>
                 {/* 将 /edit/${teacher.id} 替换为实际的编辑路径 */}
                 <td>
-                  <Link to={`/admin/editteacherlist/`+teachers.id}>Edit</Link>
+                  <Link to={`/admin/editteacherlist/`+teachers.id} className="edit-link">Edit</Link>
+                  <button className="delete-link" onClick={handleDeleteButton}>Delete</button>
                 </td> 
                 <td>{teachers.email}</td>
                 <td>{teachers.first_name+" "+teachers.last_name}</td>

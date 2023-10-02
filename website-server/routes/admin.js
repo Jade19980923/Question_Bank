@@ -13,7 +13,7 @@ const router = express.Router()
 router.get("/teachers",getTeachers)
 router.get("/teacher/:id",getSingleTeacher)
 router.get("/divisions",getDivisions)
-router.delete("/teacher/:id",deleteTeacher)
+router.delete("/deleteTeacher/:id",deleteTeacher)
 router.put("/updateTeacher/:id",updateTeacher)
 router.post("/addTeacher",addTeacher)
 

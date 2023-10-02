@@ -90,3 +90,12 @@ td:nth-child(5),th:nth-child(5) {
 .add-button:hover {
   background-color: #218838;
 }
+
+td a.delete-link {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: red; /* 修改为红色 */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
